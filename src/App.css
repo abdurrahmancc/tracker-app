@@ -17,6 +17,11 @@ body {
 
 /* ================== dashboard scroll bar style strt =============== */
 
+.dashboard-scrollbar {
+  scrollbar-color: #FFC248 #ffffff00;
+  scrollbar-width: thin;
+}
+
 .dashboard-scrollbar::-webkit-scrollbar {
   width: 7px;
 }
@@ -27,9 +32,6 @@ body {
 }
 
 
-.dashboard-scrollbar {
-  scrollbar-color: #FFC248 #ffffff;
-  scrollbar-width: thin !important;
-}
+
 
 /* ================== dashboard scroll bar style end =============== */

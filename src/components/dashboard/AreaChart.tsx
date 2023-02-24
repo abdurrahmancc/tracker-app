@@ -108,7 +108,14 @@ const AreaCharts = ({ lastWeekExpense }: any) => {
               <stop offset="95%" stopColor="#58AA26" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: "#333333" }} />
+          <XAxis
+            padding={{ left: 10, right: 10 }}
+            dataKey="name"
+            dy={10}
+            axisLine={false}
+            tickLine={false}
+            tick={{ fill: "#333333" }}
+          />
           <YAxis axisLine={false} tickLine={false} tick={{ fill: "#333333" }} />
           <Tooltip cursor={false} wrapperStyle={{ outline: "none" }} content={<CustomTooltip />} />
           <CartesianGrid vertical={false} strokeDasharray="3 3" />

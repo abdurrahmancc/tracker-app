@@ -128,44 +128,53 @@ const LatestActivity = () => {
       {/* ============ Current Balance card end ============ */}
       {/* ============ Latest Activity start ============ */}
       <div className="mt-[42px] ml-[14px]">
-        <h6 className="text-[16px] pb-4 text-[#EB001B] tracking-[2px] pl-[5px] leading-[18.75px]">
-          Latest Activity
-        </h6>
-        <div className="max-w-[436px] border-t border-[#CECECE]">
-          <div>
-            <h6 className="text-[14px] pt-[25px] text-center leading-[16.41px]">Today</h6>
-            {/* =========== Today Activity  start ========== */}
-            <div className="mt-2">
-              {getTodayData &&
-                getTodayData.map((expense, i) => {
-                  const isLast = getTodayData.length - 1;
-                  return (
-                    <LatesActivityRow key={expense?._id} expense={expense} isLast={isLast === i} />
-                  );
-                })}
+        <div className="border-b border-[#CECECE]">
+          <h6 className="text-[16px] pb-4 text-[#EB001B] tracking-[2px] pl-[5px] leading-[18.75px]">
+            Latest Activity
+          </h6>
+        </div>
+        <div className="dashboard-scrollbar max-h-[800px] overflow-y-auto">
+          <div className="max-w-[436px]">
+            <div>
+              <h6 className="text-[14px] pt-[25px] text-center leading-[16.41px]">Today</h6>
+              {/* =========== Today Activity  start ========== */}
+              <div className="mt-2">
+                {getTodayData &&
+                  getTodayData.map((expense, i) => {
+                    const isLast = getTodayData.length - 1;
+                    return (
+                      <LatesActivityRow
+                        key={expense?._id}
+                        expense={expense}
+                        isLast={isLast === i}
+                      />
+                    );
+                  })}
+              </div>
             </div>
-          </div>
-          <div className="mt-10">
-            <h6 className="text-[14px] text-center leading-[16.41px]">Yesterday</h6>
-            {/* =========== Today Activity start ========== */}
-            {/* =========== Yesterday Activity start ========== */}
-            <div className="mt-2">
-              {getYesterdayData &&
-                getYesterdayData.map((expense, i) => {
-                  const isLast = getYesterdayData.length - 1;
-                  return (
-                    <LatesActivityRow key={expense?._id} expense={expense} isLast={isLast === i} />
-                  );
-                })}
+            <div className={`mt-10`}>
+              <h6 className="text-[14px] text-center leading-[16.41px]">Yesterday</h6>
+              {/* =========== Today Activity start ========== */}
+              {/* =========== Yesterday Activity start ========== */}
+              <div className="mt-2">
+                {getYesterdayData &&
+                  getYesterdayData.map((expense, i) => {
+                    const isLast = getYesterdayData.length - 1;
+                    return (
+                      <LatesActivityRow
+                        key={expense?._id}
+                        expense={expense}
+                        isLast={isLast === i}
+                      />
+                    );
+                  })}
+              </div>
+              {/* =========== Yesterday Activity end ========== */}
             </div>
-            {/* =========== Yesterday Activity end ========== */}
           </div>
         </div>
       </div>
       {/* ============ Latest Activity end ============ */}
-      <div className="w-full mt-[72px] flex justify-end">
-        <div className="w-[7px] rounded-l-[4px] h-[156px] bg-[#FFC248]"></div>
-      </div>
     </>
   );
 };
