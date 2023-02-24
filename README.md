@@ -7,11 +7,11 @@
  # using technology
 
  <ul>
-     <li><a src="https://create-react-app.dev/docs/adding-typescript/">React</a></li>
-    <li><a src="https://create-react-app.dev/docs/adding-typescript/">Typescript</a></li>
-    <li><a src="https://nodejs.org/en/download/">Node.js</a></li>
-    <li><a src="https://mongoosejs.com/">Mongoose</a></li>
-    <li><a src="https://www.mongodb.com/docs/drivers/node/current/quick-start/">MongoDB</a></li>
+     <li>React</li>
+    <li>Typescript</li>
+    <li>Node.js</li>
+    <li>Mongoose</li>
+    <li>MongoDB</li>
  </ul>
 
 
