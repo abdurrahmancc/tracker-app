@@ -8,13 +8,19 @@ const Header = () => {
     <>
       <div className="absolute top-[35px] w-full">
         <div className="flex justify-between pl-[14px] pr-[61px]">
-          <div className="flex gap-[30px] items-center">
-            <img src={logo} className="w-[91.6px] h-[91.51px]" alt="logo" />
-            <div>
-              <h2 className="text-[28px] leading-[32.81px] font-[500] text-[#452F02]">Kösten</h2>
-              <p className="text-[16px] pt-[6px] leading-[18.75px] text-[#452F02]">
-                Expense manager
-              </p>
+          <div>
+            <div className="fixed top-[35px]">
+              <div className="flex gap-[30px] items-center">
+                <img src={logo} className="w-[91.6px] h-[91.51px]" alt="logo" />
+                <div>
+                  <h2 className="text-[28px] leading-[32.81px] font-[500] text-[#452F02]">
+                    Kösten
+                  </h2>
+                  <p className="text-[16px] pt-[6px] leading-[18.75px] text-[#452F02]">
+                    Expense manager
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
           <div className="flex items-center gap-[41px]">

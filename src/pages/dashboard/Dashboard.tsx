@@ -23,29 +23,31 @@ const Dashboard = () => {
 
   return (
     <>
-      <header className="relative">
+      <header className="relative z-50">
         <Header />
       </header>
       <main className="min-h-screen max-w-[1920px]">
-        <div>
-          <div className="flex ">
-            <div className="h-full bg-[#FFFBF3] border-r border-[#CECECE] w-[121px] min-w-[121px] pt-[253px]">
-              <Sidebar />
-            </div>
-            <div className="w-[480px] min-w-[480px] pt-[191px] bg-[#FFFBF3]">
-              <LatestActivity />
-            </div>
-            <div className="w-full px-14">
-              <div className="w-full pt-[191px] flex justify-between">
-                <ThisWeekSpend />
-                <Categories />
+        <div className="flex h-full">
+          <div className="w-[601px] bg-[#FFFBF3] min-w-[601px]">
+            <div className="flex fixed">
+              <div className="h-full min-h-screen border-r border-[#CECECE] w-[121px] min-w-[121px] pt-[253px]">
+                <Sidebar />
               </div>
-              <div
-                style={{ backgroundImage: `url(${bg})` }}
-                className="mt-[65px] bg-cover bg-no-repeat"
-              >
-                <LastMonthActivities />
+              <div className="w-[480px] min-w-[480px] pt-[191px] bg-[#FFFBF3]">
+                <LatestActivity />
               </div>
+            </div>
+          </div>
+          <div className="w-full px-14 bg-[#f6f6f6]">
+            <div className="w-full pt-[191px] flex justify-between">
+              <ThisWeekSpend />
+              <Categories />
+            </div>
+            <div
+              style={{ backgroundImage: `url(${bg})` }}
+              className="mt-[65px] bg-cover bg-no-repeat"
+            >
+              <LastMonthActivities />
             </div>
           </div>
         </div>

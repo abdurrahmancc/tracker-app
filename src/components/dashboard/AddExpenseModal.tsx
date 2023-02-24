@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axiosPrivet from "../../hooks/axiosPrivet";
 import { useAddExpenseContext } from "../../hooks/useExpenseContext";
 import { categoriesData } from "../../library/data";
+import { LoadingBtn } from "../shared/LoadingBtn";
 
 type FromData = {
   category: string;
@@ -9,6 +11,7 @@ type FromData = {
 };
 
 const AddExpenseModal = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { setCurrentBalance, currentBalance } = useAddExpenseContext();
   const {
     register,
@@ -19,6 +22,7 @@ const AddExpenseModal = () => {
   } = useForm<FromData>();
 
   const onSubmit = handleSubmit(async (data) => {
+    setIsLoading(true);
     try {
       if (data.category !== "select category") {
         const selectInfo = categoriesData.find((category) => category.id === data.category);
@@ -30,6 +34,7 @@ const AddExpenseModal = () => {
         });
         setCurrentBalance(currentBalance - res?.data?.price);
         reset();
+        setIsLoading(false);
       } else {
         setError("category", {
           type: "required",
@@ -37,6 +42,7 @@ const AddExpenseModal = () => {
         });
       }
     } catch (err) {
+      setIsLoading(false);
       console.log(err);
     }
   });
@@ -99,7 +105,7 @@ const AddExpenseModal = () => {
                         type="submit"
                         className="bg-primary font-[500] rounded text-[20px] leading-[30px] text-[#fff] h-[60px] w-full"
                       >
-                        Add Expense
+                        {isLoading ? <LoadingBtn /> : "Add Expense"}
                       </button>
                     </div>
                   </form>

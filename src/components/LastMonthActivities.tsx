@@ -12,9 +12,11 @@ const LastMonthActivities = () => {
         </div>
         <div className="text-[#452F02] font-[500] text-[16px] leading-[18px]">View All</div>
       </div>
-      <div className="max-w-[1031px]  mt-[29px] pb-[40px]">
-        <div className="h-[300px] overflow-y-auto dashboard-scrollbar">
-          <LastMonthActivitiesTable />
+      <div className="mt-[29px] pb-[20px]">
+        <div className="h-[330px] overflow-y-auto dashboard-scrollbar">
+          <div className="max-w-[1031px]">
+            <LastMonthActivitiesTable />
+          </div>
         </div>
       </div>
     </div>

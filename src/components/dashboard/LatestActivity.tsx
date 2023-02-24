@@ -56,8 +56,6 @@ const LatestActivity = () => {
       return inc === formatDate(new Date(currentDate - 86400 * 1000));
     });
 
-  console.log(getYesterdayData);
-
   return (
     <>
       {/* ============ Current Balance card start ============ */}
@@ -89,7 +87,7 @@ const LatestActivity = () => {
             Latest Activity
           </h6>
         </div>
-        <div className="dashboard-scrollbar max-h-[800px] overflow-y-auto">
+        <div className="dashboard-scrollbar max-h-[464px] overflow-y-auto">
           <div className="max-w-[436px]">
             <div>
               <h6 className="text-[14px] pt-[25px] text-center leading-[16.41px]">Today</h6>
