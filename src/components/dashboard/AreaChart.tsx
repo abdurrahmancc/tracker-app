@@ -1,16 +1,15 @@
 import { format } from "date-fns";
 import {
+  AreaChart,
   XAxis,
-  BarChart,
-  Bar,
-  Cell,
   YAxis,
   CartesianGrid,
   Tooltip,
+  Area,
   ResponsiveContainer,
 } from "recharts";
 
-const BarCharts = ({ lastWeekExpense }: any) => {
+const AreaCharts = ({ lastWeekExpense }: any) => {
   let mo: number = 0;
   let tu: number = 0;
   let we: number = 0;
@@ -87,44 +86,43 @@ const BarCharts = ({ lastWeekExpense }: any) => {
   const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="custom-tooltip border-none rounded-[14px] shadow bg-white px-6 py-[14px]">
+        <div className="custom-tooltip rounded-[14px] shadow bg-white px-6 py-[14px]">
           <p className="text-primary text-sm">{`$${payload[0].value}`}</p>
         </div>
       );
     }
     return null;
   };
-
   return (
-    <>
+    <div className="mt-10">
       <ResponsiveContainer width="100%" height={200}>
-        <BarChart
+        <AreaChart
           width={415}
           height={176}
           data={data}
-          barSize={32}
-          barCategoryGap={24}
           margin={{ top: 0, right: 0, left: -25, bottom: 0 }}
         >
-          <CartesianGrid vertical={false} horizontal={false} strokeDasharray="3 3" />
+          <defs>
+            <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#58AA26" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#58AA26" stopOpacity={0} />
+            </linearGradient>
+          </defs>
           <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: "#333333" }} />
           <YAxis axisLine={false} tickLine={false} tick={{ fill: "#333333" }} />
           <Tooltip cursor={false} wrapperStyle={{ outline: "none" }} content={<CustomTooltip />} />
-          <Bar dataKey="uv" radius={8} barSize={31}>
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={`${entry.color}`}
-                type="monotone"
-                stroke={"#58AA26"}
-                strokeWidth={0}
-              />
-            ))}
-          </Bar>
-        </BarChart>
+          <CartesianGrid vertical={false} strokeDasharray="3 3" />
+          <Area
+            type="monotone"
+            dataKey="uv"
+            stroke="#58AA26"
+            fillOpacity={1}
+            fill="url(#colorPv)"
+          />
+        </AreaChart>
       </ResponsiveContainer>
-    </>
+    </div>
   );
 };
 
-export default BarCharts;
+export default AreaCharts;

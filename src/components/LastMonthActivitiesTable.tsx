@@ -1,16 +1,47 @@
-import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table";
-import { lastMonthActivitiesData } from "../library/data";
-import LastMonthActivitiesCategoryIcon from "./LastMonthActivitiesCategoryIcon";
-import { useAddExpenseContext } from "../hooks/useExpenseContext";
+import { useState, useEffect } from "react";
+import { Table, Tbody, Th, Thead, Tr } from "react-super-responsive-table";
+import { DbExpenseDataModel } from "../types/types";
+import axiosPrivet from "../hooks/axiosPrivet";
+import LastMonthActivitiesTableRow from "./LastMonthActivitiesTableRow";
 
 const LastMonthActivitiesTable = () => {
+  const [lastMonthExpense, setLastMonthExpense] = useState<DbExpenseDataModel[] | null>(null);
+
+  useEffect(() => {
+    try {
+      (async () => {
+        const { data } = await axiosPrivet.get("/expense/get-last-month-expense");
+        if (data?.data) {
+          setLastMonthExpense(data?.data);
+        }
+      })();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const homeExpense = lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "home");
+  const gasExpense = lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "gas");
+  const securityExpense =
+    lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "security");
+  const videosExpense =
+    lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "videos");
+  const gamesExpense = lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "games");
+  const papersExpense =
+    lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "papers");
+  const shopExpense = lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "shop");
+  const travelExpense =
+    lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "travel");
+  const serviceExpense =
+    lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "service");
+
   return (
     <Table>
       <Thead>
         <Tr>
           <Th
             className={
-              "font-[500] max-w-[380px] min-w-[380px] col-span-1 text-[16px] text-start text-[#9B9B9B] leading-[18px]"
+              "font-[500] max-w-[280px] min-w-[280px] col-span-1 text-[16px] text-start text-[#9B9B9B] leading-[18px]"
             }
           >
             categories Names
@@ -39,17 +70,41 @@ const LastMonthActivitiesTable = () => {
         </Tr>
       </Thead>
       <Tbody>
-        {lastMonthActivitiesData &&
-          lastMonthActivitiesData.map((d) => (
-            <Tr key={d?._id}>
-              <Td className="pt-[38px]">
-                <LastMonthActivitiesCategoryIcon category={d?.category} title={d?.title} />
-              </Td>
-              <Td className="pt-[38px] text-[#22D03E] text-[23px] leading-8">Successful</Td>
-              <Td className="pt-[38px] text-[#452F02] text-[23px] leading-8">27 / 10 /2021</Td>
-              <Td className="pt-[38px] text-[#452F02] text-[23px] leading-8">$4543</Td>
-            </Tr>
-          ))}
+        {homeExpense && homeExpense?.length >= 1 && (
+          <LastMonthActivitiesTableRow expenses={homeExpense} />
+        )}
+
+        {gamesExpense && gamesExpense?.length >= 1 && (
+          <LastMonthActivitiesTableRow expenses={gamesExpense} />
+        )}
+
+        {gasExpense && gasExpense?.length >= 1 && (
+          <LastMonthActivitiesTableRow expenses={gasExpense} />
+        )}
+
+        {securityExpense && securityExpense?.length >= 1 && (
+          <LastMonthActivitiesTableRow expenses={securityExpense} />
+        )}
+
+        {videosExpense && videosExpense?.length >= 1 && (
+          <LastMonthActivitiesTableRow expenses={videosExpense} />
+        )}
+
+        {shopExpense && shopExpense?.length >= 1 && (
+          <LastMonthActivitiesTableRow expenses={shopExpense} />
+        )}
+
+        {papersExpense && papersExpense?.length >= 1 && (
+          <LastMonthActivitiesTableRow expenses={papersExpense} />
+        )}
+
+        {travelExpense && travelExpense?.length >= 1 && (
+          <LastMonthActivitiesTableRow expenses={travelExpense} />
+        )}
+
+        {serviceExpense && serviceExpense?.length >= 1 && (
+          <LastMonthActivitiesTableRow expenses={serviceExpense} />
+        )}
       </Tbody>
     </Table>
   );

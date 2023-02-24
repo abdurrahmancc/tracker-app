@@ -1,4 +1,3 @@
-import React from "react";
 import LastMonthActivitiesTable from "./LastMonthActivitiesTable";
 
 const LastMonthActivities = () => {
@@ -13,8 +12,10 @@ const LastMonthActivities = () => {
         </div>
         <div className="text-[#452F02] font-[500] text-[16px] leading-[18px]">View All</div>
       </div>
-      <div className="max-w-[1031px] mt-[29px] pb-[96px]">
-        <LastMonthActivitiesTable />
+      <div className="max-w-[1031px]  mt-[29px] pb-[40px]">
+        <div className="h-[300px] overflow-y-auto dashboard-scrollbar">
+          <LastMonthActivitiesTable />
+        </div>
       </div>
     </div>
   );

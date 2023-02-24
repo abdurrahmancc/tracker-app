@@ -21,9 +21,7 @@ const LatesActivityRow = ({ isLast, expense }: Props) => {
             {expense?.name}
           </h5>
         </div>
-        <p className="font-[500] text-[24px] text-[#EB001B] leading-[28.13px]">
-          -${expense?.price}
-        </p>
+        <p className="font-[500] text-[24px] text-[#EB001B] leading-[28.13px]">${expense?.price}</p>
       </div>
     </div>
   );

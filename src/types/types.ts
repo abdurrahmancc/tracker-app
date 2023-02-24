@@ -21,7 +21,6 @@ export type DbExpenseDataModel = {
   _id: string
   category: string
   createdAt: Date | string
-  email: string
   price: number
   status: string
   name: string

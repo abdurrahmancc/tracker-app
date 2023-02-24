@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction, useState } from "react";
 import { useForm } from "react-hook-form";
 import axiosPrivet from "../../hooks/axiosPrivet";
 import { useAddExpenseContext } from "../../hooks/useExpenseContext";
@@ -9,13 +8,8 @@ type FromData = {
   price: number;
 };
 
-interface Props {
-  isLogin: boolean;
-  setIsLogin: Dispatch<SetStateAction<boolean>>;
-}
-
 const AddExpenseModal = () => {
-  const { allExpenseData, setCurrentBalance, currentBalance } = useAddExpenseContext();
+  const { setCurrentBalance, currentBalance } = useAddExpenseContext();
   const {
     register,
     handleSubmit,
@@ -27,9 +21,12 @@ const AddExpenseModal = () => {
   const onSubmit = handleSubmit(async (data) => {
     try {
       if (data.category !== "select category") {
+        const selectInfo = categoriesData.find((category) => category.id === data.category);
+
         const { data: res } = await axiosPrivet.post("/expense", {
           ...data,
-          email: "abcfffdfe@gmail.com",
+          name: selectInfo?.name,
+          category: selectInfo?.category,
         });
         setCurrentBalance(currentBalance - res?.data?.price);
         reset();
@@ -60,11 +57,10 @@ const AddExpenseModal = () => {
                   <form onSubmit={onSubmit}>
                     <div className="form-control">
                       <select {...register("category")} className="select select-primary w-full">
-                        <option disabled selected hidden>
-                          select category
-                        </option>
                         {categoriesData.map((category) => (
-                          <option key={category?.id}>{category?.category}</option>
+                          <option key={category?.id} value={category?.id}>
+                            {category?.category}
+                          </option>
                         ))}
                       </select>
                       {errors.category?.type === "required" && (

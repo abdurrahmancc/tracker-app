@@ -2,7 +2,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { accessTokenName } from "./useCookies";
 
-export const baseURL = `http://localhost:5000`;
+export const baseURL = `https://tracker-app-server-production.up.railway.app`;
+// export const baseURL = `http://localhost:5000`;
 
 const axiosPrivet = axios.create({
   withCredentials: true,

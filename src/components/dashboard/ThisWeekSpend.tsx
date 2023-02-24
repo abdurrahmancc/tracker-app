@@ -3,6 +3,7 @@ import axiosPrivet from "../../hooks/axiosPrivet";
 import { DbExpenseDataModel } from "../../types/types";
 import ThisWeekSpendIcons from "./ThisWeekSpendIcons";
 import BarCharts from "./BarChart";
+import AreaCharts from "./AreaChart";
 
 const ThisWeekSpend = () => {
   const [lastWeekExpense, setLastWeekExpense] = useState<DbExpenseDataModel[] | null>(null);
@@ -92,6 +93,7 @@ const ThisWeekSpend = () => {
       </div>
       <div>
         <BarCharts lastWeekExpense={lastWeekExpense} />
+        <AreaCharts lastWeekExpense={lastWeekExpense} />
       </div>
     </div>
   );
