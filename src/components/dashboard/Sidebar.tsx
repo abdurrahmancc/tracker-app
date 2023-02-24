@@ -1,4 +1,3 @@
-import React from "react";
 import dashboardImg from "../../assets/dashboard.svg";
 import { BiLogOut } from "react-icons/bi";
 

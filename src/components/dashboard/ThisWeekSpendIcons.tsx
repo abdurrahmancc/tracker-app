@@ -1,5 +1,3 @@
-import React from "react";
-import plus from "../../assets/plus.svg";
 import { categoriesData } from "../../library/data";
 import { DbExpenseDataModel } from "../../types/types";
 

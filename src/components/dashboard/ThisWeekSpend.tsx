@@ -4,10 +4,11 @@ import { DbExpenseDataModel } from "../../types/types";
 import ThisWeekSpendIcons from "./ThisWeekSpendIcons";
 import BarCharts from "./BarChart";
 import AreaCharts from "./AreaChart";
+import { useAddExpenseContext } from "../../hooks/useExpenseContext";
 
 const ThisWeekSpend = () => {
   const [lastWeekExpense, setLastWeekExpense] = useState<DbExpenseDataModel[] | null>(null);
-
+  const { currentBalance } = useAddExpenseContext();
   useEffect(() => {
     try {
       (async () => {
@@ -19,7 +20,7 @@ const ThisWeekSpend = () => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [currentBalance]);
 
   let expenseBalance;
   try {

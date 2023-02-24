@@ -3,50 +3,6 @@ import walletIcon from "../../assets/wallet.svg";
 import { format } from "date-fns";
 import { useAddExpenseContext } from "../../hooks/useExpenseContext";
 import LatesActivityRow from "./LatesActivityRow";
-import { DbExpenseDataModel } from "../../types/types";
-
-const dates: DbExpenseDataModel[] = [
-  {
-    _id: "1",
-    category: "home",
-    createdAt: `2023-02-10T22:26:28.539+00:00`,
-    price: 21,
-    status: "success",
-    name: "home",
-  },
-  {
-    _id: "2",
-    category: "shop",
-    createdAt: "2023-02-11T12:43:19.985+00:00",
-    price: 21,
-    status: "success",
-    name: "shop",
-  },
-  {
-    _id: "3",
-    category: "service",
-    createdAt: "2023-02-12T15:48:45.859+00:00",
-    price: 41,
-    status: "success",
-    name: "service",
-  },
-  {
-    _id: "4",
-    category: "security",
-    createdAt: "2023-02-23T17:29:57.057+00:00",
-    price: 21,
-    status: "success",
-    name: "security",
-  },
-  {
-    _id: "5",
-    category: "videos",
-    createdAt: "2023-02-23T17:29:57.057+00:00",
-    price: 21,
-    status: "success",
-    name: "videos",
-  },
-];
 
 const LatestActivity = () => {
   const { allExpenseData, currentBalance } = useAddExpenseContext();

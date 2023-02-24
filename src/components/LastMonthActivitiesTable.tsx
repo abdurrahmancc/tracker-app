@@ -3,10 +3,11 @@ import { Table, Tbody, Th, Thead, Tr } from "react-super-responsive-table";
 import { DbExpenseDataModel } from "../types/types";
 import axiosPrivet from "../hooks/axiosPrivet";
 import LastMonthActivitiesTableRow from "./LastMonthActivitiesTableRow";
+import { useAddExpenseContext } from "../hooks/useExpenseContext";
 
 const LastMonthActivitiesTable = () => {
   const [lastMonthExpense, setLastMonthExpense] = useState<DbExpenseDataModel[] | null>(null);
-
+  const { currentBalance } = useAddExpenseContext();
   useEffect(() => {
     try {
       (async () => {
@@ -18,7 +19,7 @@ const LastMonthActivitiesTable = () => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [currentBalance]);
 
   const homeExpense = lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "home");
   const gasExpense = lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "gas");
