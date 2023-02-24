@@ -1,56 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import { useState } from "react";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Track from "./components/dashboard/Track";
+import NotFound from "./pages/NotFound";
+import { adminDashboardRoutes } from "./routes/privetRoutes";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
+
+import { AddExpenseModel, DbExpenseDataModel } from "./types/types";
+import { ExpenseContext } from "./hooks/useExpenseContext";
 
 function App() {
+  const [addExpense, setAddExpense] = useState<AddExpenseModel | null>(null);
+  const [allExpenseData, setAllExpenseData] = useState<DbExpenseDataModel[] | null>(null);
+  const [currentBalance, setCurrentBalance] = useState<number>(50000);
+
+  const contextValues = {
+    setAddExpense,
+    setCurrentBalance,
+    currentBalance,
+    addExpense,
+    setAllExpenseData,
+    allExpenseData,
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div>
+      <ExpenseContext.Provider value={contextValues}>
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route index element={<Track />} />
+            {adminDashboardRoutes.map(({ path, Component }, index) => (
+              <Route key={index} path={path} element={<Component />} />
+            ))}
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </ExpenseContext.Provider>
     </div>
   );
 }

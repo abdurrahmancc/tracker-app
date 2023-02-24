@@ -1,39 +1,28 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+/* =============tailwind config css start=========== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* ==============tailwind config css end============= */
+
+
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  background-color: #f6f6f6;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* ================== dashboard scroll bar style strt =============== */
+.dashboard-scrollbar::-webkit-scrollbar {
+  width: 7px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+.dashboard-scrollbar::-webkit-scrollbar-thumb {
+  background: #FFC248; 
+  border-radius: 4px 0px 0px 4px;
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.App-link {
-  color: rgb(112, 76, 182);
-}
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
+/* ================== dashboard scroll bar style end =============== */
