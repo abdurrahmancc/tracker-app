@@ -33,9 +33,20 @@ const LastMonthActivitiesTable = () => {
   const shopExpense = lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "shop");
   const travelExpense =
     lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "travel");
+
   const serviceExpense =
     lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "service");
 
+  const antivirusExpense =
+    lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "antivirus");
+
+  const reFilledExpense =
+    lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "reFilled");
+
+  const iPCamsExpense =
+    lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "IPCams");
+
+  console.log("homeExpense", homeExpense);
   return (
     <Table>
       <Thead>
@@ -105,6 +116,17 @@ const LastMonthActivitiesTable = () => {
 
         {serviceExpense && serviceExpense?.length >= 1 && (
           <LastMonthActivitiesTableRow expenses={serviceExpense} />
+        )}
+
+        {antivirusExpense && antivirusExpense?.length >= 1 && (
+          <LastMonthActivitiesTableRow expenses={antivirusExpense} />
+        )}
+        {reFilledExpense && reFilledExpense?.length >= 1 && (
+          <LastMonthActivitiesTableRow expenses={reFilledExpense} />
+        )}
+
+        {iPCamsExpense && iPCamsExpense?.length >= 1 && (
+          <LastMonthActivitiesTableRow expenses={iPCamsExpense} />
         )}
       </Tbody>
     </Table>
