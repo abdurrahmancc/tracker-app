@@ -22,6 +22,7 @@ const BarCharts = ({ lastWeekExpense }: any) => {
   lastWeekExpense &&
     lastWeekExpense?.forEach((data: any) => {
       const dayName = format(new Date(data?.createdAt), "EEEEEE");
+
       if (dayName.includes("Mo")) {
         mo += data.price;
       } else if (dayName.includes("Tu")) {

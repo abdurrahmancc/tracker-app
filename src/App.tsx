@@ -6,7 +6,6 @@ import Track from "./components/dashboard/Track";
 import NotFound from "./pages/NotFound";
 import { adminDashboardRoutes } from "./routes/privetRoutes";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
-
 import { AddExpenseModel, DbExpenseDataModel } from "./types/types";
 import { ExpenseContext } from "./hooks/useExpenseContext";
 

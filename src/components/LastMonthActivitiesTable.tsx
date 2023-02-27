@@ -46,7 +46,6 @@ const LastMonthActivitiesTable = () => {
   const iPCamsExpense =
     lastMonthExpense && lastMonthExpense.filter((ex) => ex.category === "IPCams");
 
-  console.log("homeExpense", homeExpense);
   return (
     <Table>
       <Thead>

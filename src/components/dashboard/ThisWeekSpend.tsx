@@ -37,16 +37,32 @@ const ThisWeekSpend = () => {
   }
 
   const homeExpense = lastWeekExpense && lastWeekExpense.filter((ex) => ex.category === "home");
+
   const gasExpense = lastWeekExpense && lastWeekExpense.filter((ex) => ex.category === "gas");
+
   const securityExpense =
     lastWeekExpense && lastWeekExpense.filter((ex) => ex.category === "security");
+
   const videosExpense = lastWeekExpense && lastWeekExpense.filter((ex) => ex.category === "videos");
+
   const gamesExpense = lastWeekExpense && lastWeekExpense.filter((ex) => ex.category === "games");
+
   const papersExpense = lastWeekExpense && lastWeekExpense.filter((ex) => ex.category === "papers");
+
   const shopExpense = lastWeekExpense && lastWeekExpense.filter((ex) => ex.category === "shop");
+
   const travelExpense = lastWeekExpense && lastWeekExpense.filter((ex) => ex.category === "travel");
+
   const serviceExpense =
     lastWeekExpense && lastWeekExpense.filter((ex) => ex.category === "service");
+
+  const antivirusExpense =
+    lastWeekExpense && lastWeekExpense.filter((ex) => ex.category === "antivirus");
+
+  const reFilledExpense =
+    lastWeekExpense && lastWeekExpense.filter((ex) => ex.category === "reFilled");
+
+  const IPCamsExpense = lastWeekExpense && lastWeekExpense.filter((ex) => ex.category === "IPCams");
 
   return (
     <div className="max-w-[416px] min-w-[416px]">
@@ -82,6 +98,15 @@ const ThisWeekSpend = () => {
             )}
             {serviceExpense && serviceExpense?.length >= 1 && (
               <ThisWeekSpendIcons expenseData={serviceExpense} />
+            )}
+            {antivirusExpense && antivirusExpense?.length >= 1 && (
+              <ThisWeekSpendIcons expenseData={antivirusExpense} />
+            )}
+            {reFilledExpense && reFilledExpense?.length >= 1 && (
+              <ThisWeekSpendIcons expenseData={reFilledExpense} />
+            )}
+            {IPCamsExpense && IPCamsExpense?.length >= 1 && (
+              <ThisWeekSpendIcons expenseData={IPCamsExpense} />
             )}
           </div>
         </div>
